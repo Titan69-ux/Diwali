@@ -1,0 +1,92 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="utf-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1, user-scalable=no, viewport-fit=cover" />
+  <title>Denkai</title>
+  <link rel="icon" type="image/svg+xml" href="denkai.svg">
+  <meta name="description" content="Create and share a personalized Diwali wish with your friend's name." />
+  <meta property="og:title" content="Happy Diwali! ✨" />
+  <meta property="og:description" content="Personalize a Diwali wish and share it instantly." />
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link href="https://fonts.googleapis.com/css2?family=Poppins:wght@400;600;800&family=Great+Vibes&display=swap" rel="stylesheet">
+  <link rel="stylesheet" href="wish.css" />
+</head>
+<body>
+  <canvas id="bg" aria-hidden="true"></canvas>
+
+  <main class="card">
+    <header class="hdr">
+      <h1 class="script">Happy Diwali</h1>
+      <p class="tag">Light • Love • Laddoos</p>
+    </header>
+
+    <div class="more-wrap">
+      <button id="moreBtn" class="icon-btn" aria-label="More options" aria-haspopup="menu" aria-expanded="false">⋮</button>
+      <nav id="moreMenu" class="menu" role="menu">
+        <button id="menuGame" class="menu-item" role="menuitem">Play game</button>
+        <button id="menuEdit" class="menu-item" role="menuitem">Edit name</button>
+        <button id="menuShare" class="menu-item" role="menuitem">Share</button>
+        <button id="menuReset" class="menu-item" role="menuitem">Reset game</button>
+      </nav>
+    </div>
+
+    <section class="wish">
+      <div class="diya" aria-hidden="true">
+        <svg viewBox="0 0 160 90" width="220" role="img" aria-label="Diya">
+          <defs>
+            <radialGradient id="flm" cx="50%" cy="30%" r="60%">
+              <stop offset="0%" stop-color="#fff7cc"/>
+              <stop offset="60%" stop-color="#ffd166"/>
+              <stop offset="100%" stop-color="#fb5607"/>
+            </radialGradient>
+            <linearGradient id="bwl" x1="0" x2="1" y1="0" y2="1">
+              <stop offset="0%" stop-color="#6d3900"/>
+              <stop offset="100%" stop-color="#c76f00"/>
+            </linearGradient>
+          </defs>
+          <ellipse cx="80" cy="78" rx="58" ry="10" fill="#00000030"/>
+          <path d="M16,52 Q80,88 144,52 Q120,18 46,18 Q28,36 16,52 Z" fill="url(#bwl)" stroke="#fec867" stroke-width="2"/>
+          <path class="flame" d="M80,14 C94,28 94,52 80,62 C66,52 66,28 80,14 Z" fill="url(#flm)">
+            <animate attributeName="d" dur="2.2s" repeatCount="indefinite"
+              values="M80,14 C94,28 94,52 80,62 C66,52 66,28 80,14 Z;
+                      M80,12 C98,28 92,52 80,62 C68,52 62,28 80,12 Z;
+                      M80,14 C94,28 94,52 80,62 C66,52 66,28 80,14 Z" />
+          </path>
+        </svg>
+      </div>
+
+      <p class="line">Dear <span id="nameSpan" class="highlight">Friend</span>,</p>
+      <p class="msg">Wishing you sparkling celebrations, sweet moments, and a year filled with light.</p>
+    </section>
+
+    <footer>
+      <small>Made with love • Share the joy ✨</small>
+    </footer>
+  </main>
+
+  <div id="gameOverlay" class="overlay" aria-modal="true" role="dialog" hidden>
+    <div class="game-bg-overlay" id="gameBgOverlay"></div>
+    <div class="dialog game">
+      <div id="scatter" class="scatter" aria-label="Diya playfield"></div>
+    </div>
+  </div>
+
+  <div id="overlay" class="overlay" aria-modal="true" role="dialog" aria-labelledby="dlgTitle" hidden>
+    <div class="dialog">
+      <h2 id="dlgTitle">Who is this for?</h2>
+      <label class="lbl" for="nameInput">Friend's name</label>
+      <input id="nameInput" type="text" maxlength="40" placeholder="e.g. Priya, Rahul" />
+      <div class="dlg-actions">
+        <button id="cancelDlg" class="btn">Cancel</button>
+        <button id="saveDlg" class="btn primary">Save</button>
+      </div>
+    </div>
+  </div>
+
+  <div id="toast" role="status" aria-live="polite" aria-atomic="true"></div>
+
+  <script src="wish.js" defer></script>
+</body>
+</html>
